@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { Result } from "postcss";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
   const {
@@ -8,10 +10,24 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signIn } = useContext(AuthContext);
   const [data, setData] = useState("");
+  const [loginError, setLoginError] = useState("");
+
   const handleLogin = (data) => {
+    setLoginError("");
     console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
   };
+
   return (
     <div className="h-[700px] flex justify-center items-center">
       <div className="w-96 p-7">
@@ -56,18 +72,21 @@ const Login = () => {
           <input
             className="btn bg-[#e9c46a] w-1/2 mt-3 text-black"
             type="submit"
-          />
-          <p className="text-white">
-            New to Keyboard Warrior?{" "}
-            <Link className="text-[#e9c46a]" to="/signup">
-              Create new Account
-            </Link>
-          </p>
-          <div className="divider text-[#e9c46a]">OR</div>{" "}
-          <button className="btn bg-[#e9c46a] w-full text-black">
-            CONTINUE WITH GOOGLE
-          </button>
+          />{" "}
+          <div>
+            {loginError && <p className="text-red-500">{loginError}</p>}
+          </div>
         </form>
+        <p className="text-white">
+          New to Keyboard Warrior?{" "}
+          <Link className="text-[#e9c46a]" to="/signup">
+            Create new Account
+          </Link>
+        </p>
+        <div className="divider text-[#e9c46a]">OR</div>
+        <button className="btn bg-[#e9c46a] w-full text-black">
+          CONTINUE WITH GOOGLE
+        </button>
       </div>
     </div>
   );
