@@ -3,6 +3,7 @@ import "./App.css";
 import Main from "./Layout/Main";
 import CategorizedProducts from "./Pages/CategorizedProducts/CategorizedProducts";
 import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,6 +14,10 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
+        },
+        {
+          path: "/login",
+          element: <Login></Login>,
         },
         {
           path: "/category/:id",
