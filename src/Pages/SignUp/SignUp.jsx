@@ -1,24 +1,40 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-const Login = () => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [data, setData] = useState("");
-  const handleLogin = (data) => {
+
+  const handleSignUp = (data) => {
     console.log(data);
   };
   return (
     <div className="h-[700px] flex justify-center items-center">
       <div className="w-96 p-7">
         <p className=" text-center text-3xl text-center text-[#e9c46a] font-bold mb-5">
-          Login
+          Sign Up
         </p>
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <form onSubmit={handleSubmit(handleSignUp)}>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text text-[#e9c46a] font-bold">Name</span>
+            </label>
+            <input
+              type="text"
+              {...register("name", {
+                required: "name is required",
+              })}
+              className="input input-bordered w-full max-w-xs"
+            />
+            {errors.name && (
+              <p className="text-red-600">{errors.name?.message}</p>
+            )}
+          </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
@@ -27,7 +43,7 @@ const Login = () => {
             <input
               type="email"
               {...register("email", {
-                required: "Email Address is required",
+                required: "email is required",
               })}
               className="input input-bordered w-full max-w-xs"
             />
@@ -58,9 +74,9 @@ const Login = () => {
             type="submit"
           />
           <p className="text-white">
-            New to Keyboard Warrior?{" "}
-            <Link className="text-[#e9c46a]" to="/signup">
-              Create new Account
+            Already have an account?{" "}
+            <Link className="text-[#e9c46a]" to="/login">
+              Login
             </Link>
           </p>
           <div className="divider text-[#e9c46a]">OR</div>{" "}
@@ -73,4 +89,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
