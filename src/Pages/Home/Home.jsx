@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../../assets/hero-image.jpg";
+import Categories from "./Categories";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
         />
       </section>
 
+      <Categories></Categories>
       <Testimonials></Testimonials>
     </div>
   );

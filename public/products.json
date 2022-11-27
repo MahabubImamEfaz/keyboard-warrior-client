@@ -1,0 +1,62 @@
+[
+  {
+    "brand_name": "Razor",
+    "product_name": "RAZER DEATHSTALKER V2 PRO",
+    "image": "https://i.ibb.co/Cs4c91q/photo-1558050032-160f36233a07-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxh.jpg",
+    "location": "dhaka",
+    "original_price": "1000",
+    "resale_price": "700",
+    "years_of_use": "1",
+    "time": "9pm"
+  },
+  {
+    "brand_name": "Razor",
+    "product_name": "RAZER DEATHSTALKER V3 PRO",
+    "image": "https://i.ibb.co/Cs4c91q/photo-1558050032-160f36233a07-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxh.jpg",
+    "location": "dhaka",
+    "original_price": "2000",
+    "resale_price": "1000",
+    "years_of_use": "1",
+    "time": "9pm"
+  },
+  {
+    "brand_name": "MeelGeeks",
+    "product_name": "mojo 89 pro",
+    "image": "https://i.ibb.co/4jrHHgw/photo-1595225249103-659f0ce9147a-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-M.jpg",
+    "location": "dhaka",
+    "original_price": "3000",
+    "resale_price": "2000",
+    "years_of_use": "1",
+    "time": "9pm"
+  },
+  {
+    "brand_name": "MeelGeeks",
+    "product_name": "Mojo 84",
+    "image": "https://i.ibb.co/4jrHHgw/photo-1595225249103-659f0ce9147a-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-M.jpg",
+    "location": "dhaka",
+    "original_price": "2500",
+    "resale_price": "1100",
+    "years_of_use": "1",
+    "time": "9pm"
+  },
+  {
+    "brand_name": "Corsair",
+    "product_name": "vengeance V2",
+    "image": "https://i.ibb.co/Cs4c91q/photo-1558050032-160f36233a07-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxh.jpg",
+    "location": "dhaka",
+    "original_price": "3500",
+    "resale_price": "1200",
+    "years_of_use": "1",
+    "time": "9pm"
+  },
+  {
+    "brand_name": "Corsair",
+    "product_name": "vengeance v3",
+    "image": "https://i.ibb.co/Cs4c91q/photo-1558050032-160f36233a07-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxh.jpg",
+    "location": "dhaka",
+    "original_price": "4500",
+    "resale_price": "2200",
+    "years_of_use": "1",
+    "time": "9pm"
+  }
+]

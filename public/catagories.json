@@ -1,0 +1,17 @@
+[
+  {
+    "brand_name": "Razor",
+    "category_id": "01",
+    "img": "https://i.ibb.co/Cs4c91q/photo-1558050032-160f36233a07-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxh.jpg"
+  },
+  {
+    "brand_name": "MeelGeeks",
+    "category_id": "02",
+    "img": "https://i.ibb.co/4jrHHgw/photo-1595225249103-659f0ce9147a-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-M.jpg"
+  },
+  {
+    "brand_name": "Corsair",
+    "category_id": "03",
+    "img": "https://i.ibb.co/2sgRZ4B/photo-1618586810102-aaa7049200c0-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-M.jpg"
+  }
+]
