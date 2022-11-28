@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
   }
   if (loading) {
     return (
-      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#e9c46a]"></div>
+      <div className="flex justify-center items-center w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#e9c46a]"></div>
     );
   }
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;

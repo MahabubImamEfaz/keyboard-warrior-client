@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const googleAuth = new GoogleAuthProvider();
@@ -14,7 +15,12 @@ const SignUp = () => {
   } = useForm();
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const [SignUpError, setSignUpError] = useState("");
+  const [createUserEmail, setCreateUserEmail] = useState("");
+  const [token] = useToken(createUserEmail);
   const navigate = useNavigate();
+  if (token) {
+    navigate("/");
+  }
 
   const handleGoogleSignIn = () => {
     providerLogin(googleAuth)
@@ -58,9 +64,10 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("save user", data);
-        navigate("/");
+        setCreateUserEmail(email);
       });
   };
+
   return (
     <div className="h-[700px] flex justify-center items-center">
       <div className="w-96 p-7">

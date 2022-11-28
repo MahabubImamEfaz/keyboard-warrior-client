@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
+  const { user } = useContext(AuthContext);
   const {
     _id,
     brand_name,
@@ -66,12 +68,15 @@ const BookingModal = ({ product, setProduct }) => {
           >
             <input
               name="name"
+              defaultValue={user?.name}
               type="text"
               placeholder="Your Name"
               className="input w-full input-bordered"
             />
             <input
               name="email"
+              defaultValue={user?.email}
+              disabled
               type="email"
               placeholder="email"
               className="input w-full input-bordered"

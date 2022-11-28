@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const googleAuth = new GoogleAuthProvider();
@@ -14,10 +15,15 @@ const Login = () => {
   } = useForm();
   const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
+  const [loginUserEmail, setloginUserEmail] = useState("");
+  const token = useToken(loginUserEmail);
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+  if (token) {
+    navigate(from, { relace: true });
+  }
 
   const handleGoogleSignIn = () => {
     providerLogin(googleAuth)
@@ -35,7 +41,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { relace: true });
+        setLoginError(data.email);
       })
       .catch((error) => {
         console.log(error.message);
