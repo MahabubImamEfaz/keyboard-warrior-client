@@ -11,6 +11,7 @@ import PrivateRoute from "./Routes/PrivateRoute";
 import DashboardLayout from "./Layout/DashboardLayout";
 import Blog from "./Pages/Blog/Blog";
 import NotFound from "./Pages/NotFound/NotFound";
+import MyOrder from "./Pages/Dashboard/MyOrder/MyOrder";
 
 function App() {
   const router = createBrowserRouter([
@@ -56,7 +57,7 @@ function App() {
       children: [
         {
           path: "/dashboard",
-          element: <Dashboard></Dashboard>,
+          element: <MyOrder></MyOrder>,
         },
       ],
     },
