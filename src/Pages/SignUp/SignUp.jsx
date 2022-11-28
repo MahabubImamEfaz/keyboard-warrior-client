@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-hot-toast";
@@ -14,6 +14,7 @@ const SignUp = () => {
   } = useForm();
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const [SignUpError, setSignUpError] = useState("");
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     providerLogin(googleAuth)
@@ -32,16 +33,32 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User Created Successfully");
+        console.log(data.name);
         const userInfo = {
           displayName: data.name,
         };
-        updateUser(userInfo)
-          .then(() => {})
-          .catch((err) => console.log(err));
+        updateUser(userInfo);
+        saveUser(data.name, data.email, data.role);
       })
-      .catch((err) => {
-        console.log(err);
-        setSignUpError(err.message);
+      .catch((error) => {
+        console.log(error);
+        setSignUpError(error.message);
+      });
+  };
+
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("save user", data);
+        navigate("/");
       });
   };
   return (
@@ -67,6 +84,27 @@ const SignUp = () => {
               <p className="text-red-600">{errors.name?.message}</p>
             )}
           </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text text-[#e9c46a] font-bold">
+                Select
+              </span>
+            </label>
+            <select
+              {...register("role", {
+                required: "name is required",
+              })}
+              className="select select-bordered w-full max-w-xs"
+            >
+              <option>Buyer</option>
+              <option>Seller</option>
+            </select>
+            {errors.role && (
+              <p className="text-red-600">{errors.role?.message}</p>
+            )}
+          </div>
+          {/* ??? */}
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
