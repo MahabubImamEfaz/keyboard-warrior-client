@@ -30,7 +30,7 @@ const NavBar = () => {
         </li>
       )}
       <li>
-        <Link>Blog</Link>
+        <Link to="/blog">Blog</Link>
       </li>
     </>
   );
@@ -74,6 +74,12 @@ const NavBar = () => {
             {menu}
           </ul>
         </div>
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-sm btn-[#2a9d8f] drawer-button lg:hidden font-extralight"
+        >
+          sidebar
+        </label>
       </div>
     </div>
   );

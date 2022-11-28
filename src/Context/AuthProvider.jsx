@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  signInWithPopup,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -45,7 +46,19 @@ const AuthProvider = ({ children }) => {
     return updateProfile(user, userInfo);
   };
 
-  const authInfo = { createUser, signIn, user, logOut, updateUser, loading };
+  const providerLogin = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
+  const authInfo = {
+    providerLogin,
+    createUser,
+    signIn,
+    user,
+    logOut,
+    updateUser,
+    loading,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

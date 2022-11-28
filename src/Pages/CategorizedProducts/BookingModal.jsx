@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-hot-toast";
 
 const BookingModal = ({ product, setProduct }) => {
   const {
@@ -32,8 +33,19 @@ const BookingModal = ({ product, setProduct }) => {
       location,
     };
 
-    console.log(submitted);
-    setProduct(null);
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(submitted),
+    }).then((data) => {
+      console.log(data);
+      if (data.acknowledged) {
+        setProduct(null);
+        toast.success("Booking Confirmed");
+      }
+    });
   };
 
   return (

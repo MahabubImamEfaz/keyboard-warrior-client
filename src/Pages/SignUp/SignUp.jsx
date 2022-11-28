@@ -3,15 +3,26 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
+  const googleAuth = new GoogleAuthProvider();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, providerLogin } = useContext(AuthContext);
   const [SignUpError, setSignUpError] = useState("");
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleAuth)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleSignUp = (data) => {
     console.log(data);
@@ -102,7 +113,10 @@ const SignUp = () => {
             </Link>
           </p>
           <div className="divider text-[#e9c46a]">OR</div>{" "}
-          <button className="btn bg-[#e9c46a] w-full text-black">
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn bg-[#e9c46a] w-full text-black"
+          >
             CONTINUE WITH GOOGLE
           </button>
         </form>

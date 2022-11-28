@@ -8,6 +8,9 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./Routes/PrivateRoute";
+import DashboardLayout from "./Layout/DashboardLayout";
+import Blog from "./Pages/Blog/Blog";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +21,10 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
         },
         {
           path: "/login",
@@ -33,15 +40,25 @@ function App() {
           loader: ({ params }) =>
             fetch(`http://localhost:5000/category/${params.id}`),
         },
+        {
+          path: "*",
+          element: <NotFound></NotFound>,
+        },
       ],
     },
     {
       path: "/dashboard",
       element: (
         <PrivateRoute>
-          <Dashboard></Dashboard>
+          <DashboardLayout></DashboardLayout>
         </PrivateRoute>
       ),
+      children: [
+        {
+          path: "/dashboard",
+          element: <Dashboard></Dashboard>,
+        },
+      ],
     },
   ]);
   return (

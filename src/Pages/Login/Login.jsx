@@ -3,20 +3,30 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const googleAuth = new GoogleAuthProvider();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signIn } = useContext(AuthContext);
-  const [data, setData] = useState("");
+  const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleAuth)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleLogin = (data) => {
     setLoginError("");
@@ -89,7 +99,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider text-[#e9c46a]">OR</div>
-        <button className="btn bg-[#e9c46a] w-full text-black">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn bg-[#e9c46a] w-full text-black"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>
