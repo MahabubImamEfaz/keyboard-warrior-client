@@ -12,6 +12,9 @@ import DashboardLayout from "./Layout/DashboardLayout";
 import Blog from "./Pages/Blog/Blog";
 import NotFound from "./Pages/NotFound/NotFound";
 import MyOrder from "./Pages/Dashboard/MyOrder/MyOrder";
+import MyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
+import AllSellers from "./Pages/Dashboard/AllSellers/AllSellers";
+import AllBuyers from "./Pages/Dashboard/AllBuyers/AllBuyers";
 
 function App() {
   const router = createBrowserRouter([
@@ -58,6 +61,22 @@ function App() {
         {
           path: "/dashboard",
           element: <MyOrder></MyOrder>,
+        },
+        {
+          path: "/dashboard/mybookings",
+          element: <MyBookings></MyBookings>,
+        },
+        {
+          path: "/dashboard/allsellers/:id",
+          element: <AllSellers></AllSellers>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/buyerseller/${params.id}`),
+        },
+        {
+          path: "/dashboard/allbuyers/:id",
+          element: <AllBuyers></AllBuyers>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/buyerseller/${params.id}`),
         },
       ],
     },

@@ -21,6 +21,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+
   if (token) {
     navigate(from, { relace: true });
   }
@@ -41,7 +42,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setLoginError(data.email);
+        setloginUserEmail(data.email);
       })
       .catch((error) => {
         console.log(error.message);
