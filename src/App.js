@@ -60,7 +60,7 @@ function App() {
       children: [
         {
           path: "/dashboard",
-          element: <MyOrder></MyOrder>,
+          element: <MyBookings></MyBookings>,
         },
         {
           path: "/dashboard/mybookings",

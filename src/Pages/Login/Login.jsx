@@ -16,7 +16,7 @@ const Login = () => {
   const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setloginUserEmail] = useState("");
-  const token = useToken(loginUserEmail);
+  const [token] = useToken(loginUserEmail);
   const location = useLocation();
   const navigate = useNavigate();
 

@@ -42,12 +42,14 @@ const AllSellers = () => {
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button
-                    onClick={() => handleMakeAdmin(seller._id)}
-                    className="btn btn-sm bg-green-600"
-                  >
-                    Admin
-                  </button>
+                  {seller?.rol !== "admin" && (
+                    <button
+                      onClick={() => handleMakeAdmin(seller._id)}
+                      className="btn btn-sm bg-green-600"
+                    >
+                      Admin
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button className="btn btn-sm bg-red-600">Delete</button>

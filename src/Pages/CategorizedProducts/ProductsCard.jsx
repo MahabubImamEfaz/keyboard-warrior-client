@@ -11,6 +11,7 @@ const ProductsCard = ({ product, setProduct }) => {
     resale_price,
     years_of_use,
     time,
+    seller_name,
   } = product;
   return (
     <div className="mx-auto mb-10">
@@ -20,12 +21,28 @@ const ProductsCard = ({ product, setProduct }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{product_name}</h2>
-          <p>Brand Name: {brand_name}</p>
-          <p>Original Price: {original_price}</p>
-          <p>Location: {location}</p>
-          <p>Resale Price: {resale_price}</p>
-          <p>Years of use: {years_of_use}</p>
-          <p>Time: {time}</p>
+          <p>
+            <span className="font-semibold">Seller Name:</span> {seller_name}
+          </p>
+          <p>
+            <span className="font-semibold">Brand Name:</span> {brand_name}
+          </p>
+          <p>
+            <span className="font-semibold">Original Price:</span>{" "}
+            {original_price}
+          </p>
+          <p>
+            <span className="font-semibold">Location:</span> {location}
+          </p>
+          <p>
+            <span className="font-semibold">Resale Price:</span> {resale_price}
+          </p>
+          <p>
+            <span className="font-semibold">Years of use:</span> {years_of_use}
+          </p>
+          <p>
+            <span className="font-semibold">Time:</span> {time}
+          </p>
 
           <div className="card-actions justify-end">
             <label
