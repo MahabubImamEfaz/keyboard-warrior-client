@@ -15,6 +15,7 @@ import MyOrder from "./Pages/Dashboard/MyOrder/MyOrder";
 import MyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 import AllSellers from "./Pages/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "./Pages/Dashboard/AllBuyers/AllBuyers";
+import AddProducts from "./Pages/Dashboard/AddProducts/AddProducts";
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +66,10 @@ function App() {
         {
           path: "/dashboard/mybookings",
           element: <MyBookings></MyBookings>,
+        },
+        {
+          path: "/dashboard/addproducts",
+          element: <AddProducts></AddProducts>,
         },
         {
           path: "/dashboard/allsellers/:id",
