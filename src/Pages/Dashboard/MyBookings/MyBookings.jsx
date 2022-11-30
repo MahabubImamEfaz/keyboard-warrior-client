@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/mybookings?email=${user?.email}`;
+  const url = `https://keyboard-warrior-server.vercel.app/mybookings?email=${user?.email}`;
 
   const { data: mybookings = [] } = useQuery({
     queryKey: ["mybookings", user?.email],

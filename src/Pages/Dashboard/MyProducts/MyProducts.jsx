@@ -6,7 +6,7 @@ const MyProducts = () => {
   const [displayProdcuts, setDisplayProducts] = useState(products);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteproducts/${id}`, {
+    fetch(`https://keyboard-warrior-server.vercel.app/deleteproducts/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

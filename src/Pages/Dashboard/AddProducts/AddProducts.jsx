@@ -41,7 +41,7 @@ const AddProducts = () => {
             email: data.email,
           };
           console.log(products);
-          fetch("http://localhost:5000/addproducts", {
+          fetch("https://keyboard-warrior-server.vercel.app/addproducts", {
             method: "POST",
             headers: {
               "content-type": "application/json",

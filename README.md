@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+//1.A keyboard buy and sell website
+//2. daisyui component library used
+//3. monodDB used for database
+//4. frontend library - react
+//5. my admin is also a seller so that's why the admin can see "add products" & "my products" routes
+//6. admin UserName - admin10@ph.com, password - 123456
+//
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

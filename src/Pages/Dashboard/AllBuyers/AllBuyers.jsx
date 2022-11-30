@@ -5,7 +5,7 @@ const AllBuyers = () => {
   const buyers = useLoaderData();
   const [displayBuyers, setDisplayBuyers] = useState(buyers);
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteusers/${id}`, {
+    fetch(`https://keyboard-warrior-server.vercel.app/deleteusers/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     _id,
     brand_name,
@@ -35,7 +37,7 @@ const BookingModal = ({ product, setProduct }) => {
       location,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://keyboard-warrior-server.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,6 +47,7 @@ const BookingModal = ({ product, setProduct }) => {
       console.log(data);
       if (data.acknowledged) {
         setProduct(null);
+        navigate("/dashboard");
         toast.success("Booking Confirmed");
       }
     });

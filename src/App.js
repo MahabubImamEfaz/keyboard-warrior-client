@@ -44,7 +44,9 @@ function App() {
           path: "/category/:id",
           element: <CategorizedProducts></CategorizedProducts>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/category/${params.id}`),
+            fetch(
+              `https://keyboard-warrior-server.vercel.app/category/${params.id}`
+            ),
         },
         {
           path: "*",
@@ -76,19 +78,25 @@ function App() {
           path: "/dashboard/allsellers/:id",
           element: <AllSellers></AllSellers>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/buyerseller/${params.id}`),
+            fetch(
+              `https://keyboard-warrior-server.vercel.app/buyerseller/${params.id}`
+            ),
         },
         {
           path: "/dashboard/allbuyers/:id",
           element: <AllBuyers></AllBuyers>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/buyerseller/${params.id}`),
+            fetch(
+              `https://keyboard-warrior-server.vercel.app/buyerseller/${params.id}`
+            ),
         },
         {
           path: "/dashboard/myproducts/:id",
           element: <MyProducts></MyProducts>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/myproducts/${params.id}`),
+            fetch(
+              `https://keyboard-warrior-server.vercel.app/myproducts/${params.id}`
+            ),
         },
       ],
     },

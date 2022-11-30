@@ -8,12 +8,12 @@ const Categories = () => {
   const { data = [] } = useQuery({
     queryKey: ["data"],
     queryFn: () =>
-      fetch("http://localhost:5000/displaycategories").then((res) =>
-        res.json()
-      ),
+      fetch(
+        "https://keyboard-warrior-server.vercel.app/displaycategories"
+      ).then((res) => res.json()),
   });
   // useEffect(() => {
-  //   fetch("http://localhost:5000/displaycategories")
+  //   fetch("https://keyboard-warrior-server.vercel.app/displaycategories")
   //     .then((res) => res.json())
   //     .then((data) => setData(data))
   //     .catch((error) => console.error(error));
