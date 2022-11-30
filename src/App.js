@@ -16,6 +16,7 @@ import MyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 import AllSellers from "./Pages/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "./Pages/Dashboard/AllBuyers/AllBuyers";
 import AddProducts from "./Pages/Dashboard/AddProducts/AddProducts";
+import MyProducts from "./Pages/Dashboard/MyProducts/MyProducts";
 
 function App() {
   const router = createBrowserRouter([
@@ -82,6 +83,12 @@ function App() {
           element: <AllBuyers></AllBuyers>,
           loader: ({ params }) =>
             fetch(`http://localhost:5000/buyerseller/${params.id}`),
+        },
+        {
+          path: "/dashboard/myproducts/:id",
+          element: <MyProducts></MyProducts>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/myproducts/${params.id}`),
         },
       ],
     },

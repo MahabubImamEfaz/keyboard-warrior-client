@@ -53,7 +53,7 @@ const AddProducts = () => {
             .then((result) => {
               console.log(result);
               toast.success("added product successfully");
-              navigate("/");
+              navigate(`/dashboard/myproducts/${user?.email}`);
             });
         }
       });
