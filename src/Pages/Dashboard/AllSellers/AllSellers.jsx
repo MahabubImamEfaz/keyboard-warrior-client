@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const AllSellers = () => {
   const Sellers = useLoaderData();
+  const [displaySeller, setDisplaySeller] = useState(Sellers);
 
   const handleMakeAdmin = (id) => {
     fetch(`http://localhost:5000/users/admin/${id}`, {
@@ -16,6 +17,20 @@ const AllSellers = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success(`admin created successfully ${Sellers.name}`);
+        }
+      });
+  };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/deleteusers/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          const remainingUsers = displaySeller.filter((buy) => buy._id !== id);
+          setDisplaySeller(remainingUsers);
         }
       });
   };
@@ -36,7 +51,7 @@ const AllSellers = () => {
             </tr>
           </thead>
           <tbody>
-            {Sellers.map((seller, index) => (
+            {displaySeller.map((seller, index) => (
               <tr key={seller._id}>
                 <th>{index + 1}</th>
                 <td>{seller.name}</td>
@@ -52,7 +67,12 @@ const AllSellers = () => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-sm bg-red-600">Delete</button>
+                  <button
+                    onClick={() => handleDelete(seller._id)}
+                    className="btn btn-sm bg-red-600"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

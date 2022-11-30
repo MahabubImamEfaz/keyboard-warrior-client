@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const AllBuyers = () => {
   const buyers = useLoaderData();
+  const [displayBuyers, setDisplayBuyers] = useState(buyers);
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/deleteusers/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          const remainingUsers = displayBuyers.filter((buy) => buy._id !== id);
+          setDisplayBuyers(remainingUsers);
+        }
+      });
+  };
 
   return (
     <div>
@@ -21,14 +35,19 @@ const AllBuyers = () => {
             </tr>
           </thead>
           <tbody>
-            {buyers.map((buyer, index) => (
+            {displayBuyers.map((buyer, index) => (
               <tr key={buyer._id}>
                 <th>{index + 1}</th>
                 <td>{buyer.name}</td>
                 <td>{buyer.email}</td>
 
                 <td>
-                  <button className="btn btn-sm bg-red-600">Delete</button>
+                  <button
+                    onClick={() => handleDelete(buyer._id)}
+                    className="btn btn-sm bg-red-600"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
